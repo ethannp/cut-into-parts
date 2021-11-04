@@ -9,12 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "audio-track-mixer": "^1.0.1",
     "cors": "^2.8.5",
-    "crunker": "^1.2.1",
     "express": "^4.17.1",
-    "mp3-cutter": "^1.0.6",
-    "multer": "^1.4.3",
     "ytdl-core": "^4.9.1"
   }
 }
