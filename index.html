@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Cut Into Parts</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            height: 100%;
+            font-family: "Fira Sans", sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .centerx {
+            position: relative;
+            margin: auto;
+        }
+
+        .box {
+            width: 70%;
+            max-width: 900px;
+            min-width: 300px;
+        }
+
+        .text {
+            height: 25px;
+            max-width: 400px;
+            width: 90%;
+            border-radius: 50px;
+            outline: none;
+            border: 3px #3E3EDA solid;
+            font-size: 20px;
+            font-family: "Fira Sans";
+            padding: 5px 10px;
+            text-align: center;
+            color: rgb(58, 71, 78);
+        }
+
+        #maxlen, #cliplen {
+            width: 50px;
+        }
+
+        .char {
+            height: 20px;
+            width: 50px;
+            font-size: 20px;
+            color: black;
+            padding: 5px 5px;
+            font-family: "Fira Sans";
+            text-align: center;
+            border-radius: 50px;
+            border: 2px #4b4b4b solid;
+        }
+
+        #add,
+        #sub {
+            width: 40px;
+            font-size: 15px;
+        }
+
+        p {
+            margin-bottom: 0;
+            margin-top: 5px;
+        }
+
+        .btn {
+            outline: none;
+            font-size: 20px;
+            padding: 5px 15px;
+            text-decoration: none;
+            font-family: "Fira Sans";
+            cursor: pointer;
+            border: 2px #3e3eda solid;
+            border-radius: 50px;
+            background-color: white;
+            color: #3E3EDA;
+            transition: all 0.1s linear;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: hsl(234, 100%, 96%);
+        }
+
+        #add {
+            color: #3eda65;
+            border: 2px #3eda65 solid;
+        }
+
+        #add:hover {
+            background-color: hsl(141, 100%, 96%)
+        }
+
+        #sub {
+            color: #cf4467;
+            border: 2px #cf4467 solid;
+        }
+
+        #sub:hover {
+            background-color: hsl(0, 100%, 96%)
+        }
+
+        hr {
+            border: 1px dashed #3E3EDA;
+            margin: 20px 0px;
+        }
+    </style>
+
+    <div class="centerx box" style="height:auto;text-align:center;padding:20px">
+        <h1>Part Splitter</h1>
+        <p>YouTube Link</p>
+        <input autocomplete="off" class="text" type="text" id="query" style="margin:10px;" maxlength="100"
+            value="https://www.youtube.com/watch?v=83m261lAlrs"></input>
+        <br>
+        <button class="btn" id="dl">Download MP3</button>
+        <p>Max length (sec)</p>
+        <input autocomplete="off" onkeypress="return /[0-9]/i.test(event.key)" class="text" type="text" id="maxlen"
+            style="margin:10px;" maxlength="5" value="60"></input>
+        <p>Clip length (sec)</p>
+        <input autocomplete="off" onkeypress="return /[0-9]/i.test(event.key)" class="text" type="text" id="cliplen"
+            style="margin:10px;" maxlength="5" value="5"></input>
+        <hr>
+
+        <button class="btn" id="add">+</button>
+        <button class="btn" id="sub">-</button>
+        <br>
+        <button class="btn" id="dist">Distribute evenly</button>
+        <br><br>
+        <table class="centerx" id="timings">
+            <colgroup width="50%"></colgroup>
+            <tr>
+                <th>Start time (sec)</th>
+                <th>End time (sec)</th>
+            </tr>
+            <tr>
+                <td>
+                    <input id="c0" class="char" type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4">
+                </td>
+                <td>
+                    <input id="c1" class="char" type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="4">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <button class="btn" id="create">Create Parts</button>
+    </div>
+
+    <script src="cutter.js" defer></script>
+    <script src="./lib/Mp3LameEncoder.min.js" defer></script>
+    <script src="./lib/Mp3LameEncoder.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
